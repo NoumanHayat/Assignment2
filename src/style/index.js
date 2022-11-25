@@ -3,6 +3,17 @@ import { Button, View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Fl
 
 
 export const homeStyle = StyleSheet.create({
+    lottie: {
+        width: 100,
+        height: 100,
+      },
+    fadingContainer: {
+        padding: 20,
+        backgroundColor: "powderblue"
+      },
+      fadingText: {
+        fontSize: 28
+      },
     bannerStyle: {
         width: '100%', height: '30%', margin: 1, borderRadius: 30,
     },

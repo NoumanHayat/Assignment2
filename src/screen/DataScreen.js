@@ -6,51 +6,87 @@ import { NavigationContainer } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DataContext } from '../hook/useData';
-import {styles} from '../style'
-export default function Screen(props) {
-    const { getDetails } = useContext(DataContext);
-    const navigation = props.navigation;
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        async function featchData() {
-            let a = await getDetails();
-            console.log(a[0]._embedded.show.image.medium);
-            setData(a.slice(0, 23))
-        }
-        featchData();
-    }, []);
-    return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+import { styles } from '../style'
+import DropDownPicker from 'react-native-dropdown-picker';
 
-            <View style={{ flex: 1 }}>
-                <View>
-                    <Text style={{ fontSize: 23, color: 'White', margin: 10 }}>Show List</Text>
-                    <FlatList
-                        data={data}
-                        renderItem={({ item, index, separators }) =>{ 
-                            console.log(item._embedded.show.name)
-                            return(
-                            <TouchableOpacity onPress={() => {  navigation.navigate('Details', item); }}>
-                                <View style={styles.cardView}>
-                                    <View >
-                                        <Image source={{ uri: item._embedded.show.image.medium }}
-                                            style={{ width: 60, height: 60, borderRadius: 30 }} />
-                                    </View>
-                                    <View style={{ padding: 10 }} >
-                                        <Text style={{ fontSize: 17 }}>{item._embedded.show.name}</Text>
-                                        <View style={{ flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15 }}>type:{item._embedded.show.type}</Text>
-                                            <Text style={{ fontSize: 15, marginLeft: 20 }}>status:{item._embedded.show.status}</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                        )}}
-                        keyExtractor={item => item.id}
-                    />
-                </View>
+export default function Screen(props) {
+    const [openType, setOpenType] = useState(false);
+    const [valueType, setValueType] = useState(null);
+    const [itemsType, setItemsType] = useState([
+        { label: 'regular', value: 'regular' },
+        { label: 'Scripted', value: 'Scripted' },
+        { label: 'Animation', value: 'Animation' },
+        { label: 'Reality', value: 'Reality' },
+        { label: 'Talk Show', value: 'Talk Show' },
+        { label: 'News', value: 'News' },
+        { label: 'Documentary', value: 'Documentary' }
+    ]);
+
+    //=============================
+    const [openLanguage, setOpenLanguage] = useState(false);
+    const [valueLanguage, setValueLanguage] = useState(null);
+    const [itemsLanguage, setItemsLanguage] = useState([
+        { label: 'Chinese', value: 'Chinese' },
+        { label: 'English', value: 'English' },
+        { label: 'Russian', value: 'Russian' },
+    ]);
+    //==========================================
+    const [openStatus, setOpenStatus] = useState(false);
+    const [valueStatus, setValueStatus] = useState(null);
+    const [itemsStatus, setItemsStatus] = useState([
+        { label: 'Running', value: 'Running' },
+        { label: 'Ended', value: 'Ended' },
+    ]);
+    return (
+        <View style={{ flex: 1, margin: 15 }}>
+            <View style={{ marginBottom: 15, zIndex: 4 }}>
+                <Text style={{ fontSize: 23 }}>Language</Text>
+                <DropDownPicker
+                    open={openLanguage}
+                    value={valueLanguage}
+                    items={itemsLanguage}
+                    setOpen={setOpenLanguage}
+                    setValue={setValueLanguage}
+                    setItems={setItemsLanguage}
+                />
 
             </View>
-        </SafeAreaView>
+            <View style={{ marginBottom: 15, zIndex: 3 }}>
+                <Text style={{ fontSize: 23 }}>Type</Text>
+                <DropDownPicker
+                    open={openType}
+                    value={valueType}
+                    items={itemsType}
+                    setOpen={setOpenType}
+                    setValue={setValueType}
+                    setItems={setItemsType}
+                />
+            </View>
+            <View style={{ marginBottom: 15, zIndex: 2 }}>
+                <Text style={{ fontSize: 23 }}>Status</Text>
+                <DropDownPicker
+                    open={openStatus}
+                    value={valueStatus}
+                    items={itemsStatus}
+                    setOpen={setOpenStatus}
+                    setValue={setValueStatus}
+                    setItems={setItemsStatus}
+                />
+            </View>
+            <View style={{ marginBottom: 15, zIndex: 1,marginTop:'60%' }}>
+                <TouchableOpacity
+                    style={{
+                        alignItems: "center",
+                        backgroundColor: "#DDDDDD",
+                        padding: 10,
+                        borderRadius:15
+
+                    }}
+                    onPress={() => { alert('ok') }}
+                >
+                    <Text>Check</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
     );
 }
