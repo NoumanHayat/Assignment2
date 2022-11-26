@@ -52,15 +52,16 @@ export const homeStyle = StyleSheet.create({
 
 export const detailsStyles = StyleSheet.create({
     imageStyle: {
-        width: 300,
-        height: 300,
-        borderRadius: 360
+        width: 250,
+        height: 250,
+        // resizeMode: 'stretch',
     },
     items: {
-        margin: 20
+        margin: 20,
+        
     },
     itemsText: {
-        fontSize: 15
+        fontSize: 18
     }
 });
 export const styles = StyleSheet.create({
