@@ -11,14 +11,12 @@ import Animated from 'react-native-animated-loader';
 export default function Screen(props) {
     const { getDetails } = useContext(DataContext);
     const navigation = props.navigation;
-    console.log(props.navigation)
     const [data, setData] = useState([]);
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         async function featchData() {
             let a = await getDetails();
-            console.log(a[0]._embedded.show.image.medium);
             setData(a.slice(0, 7));
             setVisible(!visible);
         }
@@ -46,7 +44,6 @@ export default function Screen(props) {
                         style={{ paddingBottom: 15 }}
                         data={data}
                         renderItem={({ item, index, separators }) => {
-                            console.log(item._embedded.show.name)
                             return (
                                 <TouchableOpacity onPress={() => {
                                     navigation.navigate('Details', item); 
@@ -70,39 +67,6 @@ export default function Screen(props) {
                         keyExtractor={item => item.id}
                     />
                 </View>}
-
-                {/* <View>
-                    <Text style={{ fontSize: 23, color: 'White', margin: 10 }}>Top trending</Text>
-                  
-                    <FlatList
-                        style={{ paddingBottom: 15 }}
-                        data={data}
-                        renderItem={({ item, index, separators }) => {
-                            console.log(item._embedded.show.name)
-                            return (
-                                <TouchableOpacity onPress={() => {
-                                    fadeIn();
-                                }}>
-                                    <View style={homeStyle.cardView}>
-                                        <View >
-                                            <Image source={{ uri: item._embedded.show.image.medium }}
-                                                style={{ width: 60, height: 60, borderRadius: 30 }} />
-                                        </View>
-                                        <View style={{ padding: 10 }} >
-                                            <Text style={{ fontSize: 17 }}>{item._embedded.show.name}</Text>
-                                            <View style={{ flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15 }}>type:{item._embedded.show.type}</Text>
-                                                <Text style={{ fontSize: 15, marginLeft: 20 }}>status:{item._embedded.show.status}</Text>
-                                            </View>
-                                        </View>
-                                    </View>
-                                </TouchableOpacity>
-                            )
-                        }}
-                        keyExtractor={item => item.id}
-                    />
-                </View> */}
-
             </View>
         </View>
     );

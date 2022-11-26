@@ -6,14 +6,14 @@ export const homeStyle = StyleSheet.create({
     lottie: {
         width: 100,
         height: 100,
-      },
+    },
     fadingContainer: {
         padding: 20,
         backgroundColor: "powderblue"
-      },
-      fadingText: {
+    },
+    fadingText: {
         fontSize: 28
-      },
+    },
     bannerStyle: {
         width: '100%', height: '30%', margin: 1, borderRadius: 30,
     },
@@ -56,11 +56,11 @@ export const detailsStyles = StyleSheet.create({
         height: 300,
         borderRadius: 360
     },
-    items:{
-        margin:20
+    items: {
+        margin: 20
     },
-    itemsText:{
-        fontSize:15
+    itemsText: {
+        fontSize: 15
     }
 });
 export const styles = StyleSheet.create({
@@ -97,5 +97,59 @@ export const styles = StyleSheet.create({
         elevation: 10,
         margin: 10,
         flexDirection: 'row'
-    }
+    },
+
+    imageStyle: {
+        width: 300,
+        height: 300,
+        borderRadius: 360
+    },
+    items: {
+        margin: 20
+    },
+    itemsText: {
+        fontSize: 15
+    },
+    modalContainer: {
+        margin: 10,
+    },
+    buttonStyle: {
+        backgroundColor: '#7DE24E',
+        borderWidth: 0,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 20,
+        width: 100,
+    },
+    buttonTextStyle: {
+        color: '#FFFFFF',
+        paddingVertical: 10,
+        fontSize: 16,
+    },
+    buttonTextStyle: {
+        color: '#FFFFFF',
+        paddingVertical: 10,
+        fontSize: 16,
+    },
+    redbuttonStyle: {
+        backgroundColor: 'red',
+        borderWidth: 0,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 20,
+        width: 100,
+    },
+
 });

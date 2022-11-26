@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {detailsStyles} from './../style';
 export default function Screen(props) {
-    console.log(props.route.params);
+   
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
             <View style={{ flex: 1 }}>
